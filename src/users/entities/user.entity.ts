@@ -1,5 +1,7 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { tipoUsuarioEnum } from "../enum/userRole.enum.js";
+import { Anuncio } from "../../anuncio/entities/anuncio.entity.js";
+import type { Relation } from "typeorm";
 
 @Entity('usuario')
 export class Usuario {
@@ -26,11 +28,14 @@ export class Usuario {
     tipoUsuario: tipoUsuarioEnum;
 
     @Column({ default: true })
-    ativo: boolean;
+    ativo!: boolean;
 
     @CreateDateColumn()
-    criadoEm: Date;
+    criadoEm!: Date;
 
     @UpdateDateColumn()
-    atualizadoEm: Date;
+    atualizadoEm!: Date;
+
+    @OneToMany(() => Anuncio, (anuncio) => anuncio.usuario)
+    anuncios!: Relation<Anuncio[]>;
 }

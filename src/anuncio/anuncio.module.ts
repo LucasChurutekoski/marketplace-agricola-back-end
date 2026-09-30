@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AnuncioService } from './anuncio.service.js';
 import { AnuncioController } from './anuncio.controller.js';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Anuncio } from './entities/anuncio.entity.js';
 
 @Module({
+  imports: [TypeOrmModule.forFeature([Anuncio])],
   controllers: [AnuncioController],
-  providers: [AnuncioService],
+  providers: [],
 })
 export class AnuncioModule {}

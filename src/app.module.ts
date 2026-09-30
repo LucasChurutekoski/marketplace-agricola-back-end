@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module.js';
 import { CategoriaModule } from './categoria/categoria.module.js';
 import { AnuncioModule } from './anuncio/anuncio.module.js';
+import { AuthModule } from './auth/auth.module.js';
 
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import { AnuncioModule } from './anuncio/anuncio.module.js';
     }),
 
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule, UsersModule],
+      imports: [ConfigModule, UsersModule, AuthModule],
       inject: [ConfigService],
 
       useFactory: (configService: ConfigService) => {
@@ -37,4 +38,4 @@ import { AnuncioModule } from './anuncio/anuncio.module.js';
     AnuncioModule,
   ],
 })
-export class AppModule {}
+export class AppModule { }

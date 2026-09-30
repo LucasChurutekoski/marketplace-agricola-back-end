@@ -1,4 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Anuncio } from "../../anuncio/entities/anuncio.entity.js";
+import type { Relation } from "typeorm";
 
 @Entity('categoria')
 export class Categoria {
@@ -19,5 +21,8 @@ export class Categoria {
 
     @UpdateDateColumn({ type: 'timestamptz' })
     atualizadoEm!: Date;
+
+    @OneToMany(() => Anuncio, (anuncio) => anuncio.categoria)
+    anuncios!: Relation<Anuncio[]>;
 
 }
