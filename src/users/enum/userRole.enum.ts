@@ -1,4 +1,4 @@
-export enum userRole{
+export enum tipoUsuarioEnum{
     COMPRADOR='comprador',
-    AGRICULTOR='agricultor'
+    VENDEDOR='vendedor'
 }

@@ -1,5 +1,5 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsString } from "class-validator";
-import { userRole } from "../enum/userRole.enum.js";
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsString } from "class-validator";
+import { tipoUsuarioEnum } from "../enum/userRole.enum.js";
 
 export class CreateUserDto {
 
@@ -17,9 +17,8 @@ export class CreateUserDto {
     @IsNotEmpty()
     senha!: string;
 
-    @IsNotEmpty()
-    @IsEnum(userRole)
-    role: userRole
+    @IsOptional()
+    @IsEnum(tipoUsuarioEnum)
+    tipoUsuario: tipoUsuarioEnum;
 
-    
 }

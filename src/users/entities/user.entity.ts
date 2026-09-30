@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { userRole } from "../enum/userRole.enum.js";
+import { tipoUsuarioEnum } from "../enum/userRole.enum.js";
 
 @Entity('users')
 export class User {
@@ -20,17 +20,17 @@ export class User {
 
     @Column({
         type: 'enum',
-        enum: userRole,
-        default: userRole.COMPRADOR,
+        enum: tipoUsuarioEnum,
+        default: tipoUsuarioEnum.COMPRADOR,
     })
-    role: userRole;
+    tipoUsuario: tipoUsuarioEnum;
 
     @Column({ default: true })
-    isActive: boolean;
+    ativo: boolean;
 
     @CreateDateColumn()
-    createdAt: Date;
+    criadoEm: Date;
 
     @UpdateDateColumn()
-    updatedAt: Date;
+    atualizadoEm: Date;
 }
