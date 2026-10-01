@@ -37,7 +37,7 @@ export class Anuncio {
     @UpdateDateColumn()
     atualizadoEm!: Date;
 
-    @Column()
+    @Column({nullable: true})
     imagens!: string;
 
     @ManyToOne(() => Usuario, (usuario) => usuario.anuncios)

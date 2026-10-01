@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Usuario } from '../users/entities/user.entity.js';
 import { AuthController } from './auth.controller.js';
 import { LoginUseCase } from './use-cases/login-use-case.js';
+import { JwtStrategy } from './strategies/jwt.strategy.js';
 
 @Module({
     imports: [
@@ -40,6 +41,7 @@ import { LoginUseCase } from './use-cases/login-use-case.js';
 
     providers: [
         LoginUseCase,
+        JwtStrategy
     ],
 
     exports: [

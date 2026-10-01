@@ -2,5 +2,6 @@ export enum StatusAnuncioEnum{
     DISPONIVEL='disponivel',
     PAUSADO='pausado', 
     VENDIDO='vendido',
-    ESGOTADO='esgotado'
+    ESGOTADO='esgotado',
+    DESATIVADO='desativado'
 }
