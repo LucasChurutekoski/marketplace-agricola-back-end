@@ -1,9 +1,10 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { UnidadeMedidaEnum } from "../enums/UnidadeMedidaEnum.js";
 import { StatusAnuncioEnum } from "../enums/StatusAnuncioEnum.js";
 import { Usuario } from "../../users/entities/user.entity.js";
 import type { Relation } from "typeorm";
 import { Categoria } from "../../categoria/entities/categoria.entity.js";
+import { Venda } from "../../venda/entities/venda.entity.js";
 
 @Entity('anuncio')
 export class Anuncio {
@@ -47,6 +48,9 @@ export class Anuncio {
     @ManyToOne(() => Categoria, (categoria) => categoria.anuncios)
     @JoinColumn({name: 'categoriaId'})
     categoria!: Relation<Categoria>
+
+    @OneToMany(() => Venda, (venda) => venda.anuncio)
+    vendas!: Relation<Venda[]>;
 
 
 }

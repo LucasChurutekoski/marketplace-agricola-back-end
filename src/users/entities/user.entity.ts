@@ -2,19 +2,21 @@ import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, Up
 import { tipoUsuarioEnum } from "../enum/userRole.enum.js";
 import { Anuncio } from "../../anuncio/entities/anuncio.entity.js";
 import type { Relation } from "typeorm";
+import { Endereco } from "../../endereco/entities/endereco.entity.js";
+import { Venda } from "../../venda/entities/venda.entity.js";
 
 @Entity('usuario')
 export class Usuario {
     @PrimaryGeneratedColumn('uuid')
     id!: string;
 
-    @Column({length: 120})
+    @Column({ length: 120 })
     nome!: string;
 
-    @Column({unique: true, length: 255})
+    @Column({ unique: true, length: 255 })
     email!: string;
 
-    @Column({length: 20, nullable:true})
+    @Column({ length: 20, nullable: true })
     telefone!: string;
 
     @Column()
@@ -38,4 +40,13 @@ export class Usuario {
 
     @OneToMany(() => Anuncio, (anuncio) => anuncio.usuario)
     anuncios!: Relation<Anuncio[]>;
+
+    @OneToMany(() => Endereco, (endereco) => endereco.usuario)
+    enderecos!: Relation<Endereco[]>;
+
+    @OneToMany(() => Venda, venda => venda.vendedor)
+    vendasComoVendedor!: Relation<Venda[]>;
+
+    @OneToMany(() => Venda, venda => venda.comprador)
+    vendasComoComprador!: Relation<Venda[]>;
 }

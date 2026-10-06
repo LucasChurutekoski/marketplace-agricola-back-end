@@ -5,6 +5,8 @@ import { UsersModule } from './users/users.module.js';
 import { CategoriaModule } from './categoria/categoria.module.js';
 import { AnuncioModule } from './anuncio/anuncio.module.js';
 import { AuthModule } from './auth/auth.module.js';
+import { EnderecoModule } from './endereco/endereco.module.js';
+import { VendaModule } from './venda/venda.module.js';
 
 @Module({
   imports: [
@@ -32,10 +34,10 @@ import { AuthModule } from './auth/auth.module.js';
     }),
 
     UsersModule,
-
     CategoriaModule,
-
     AnuncioModule,
+    EnderecoModule,
+    VendaModule,
   ],
 })
 export class AppModule { }
